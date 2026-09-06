@@ -20,10 +20,10 @@ public:
         }
         temp = head;
         total /= 2;
-        int cnt = 0;
-        while(cnt != total - 1) { // total - 1 = 2, cnt = 0, 1
+        total--; //  total 2
+        while(total) {
             temp = temp->next;
-            cnt++;
+            total--;
         }
         temp->next = temp->next->next;
         return head;
