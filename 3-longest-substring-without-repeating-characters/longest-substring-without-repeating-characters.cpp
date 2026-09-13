@@ -1,33 +1,21 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int ans = 0;
-        int cnt = 0;
-        map<char, int> mpp;
+        int l = 0;
+        int cnt = 0, ans = 0;
         for(int i = 0; i < s.length(); i++) {
-            if(mpp.find(s[i]) != mpp.end()) {
-                int uptodelete = mpp[s[i]];
-                for (auto it = mpp.begin(); it != mpp.end(); ) {
-                    if (it->second <= uptodelete) {
-                        it = mpp.erase(it);
-                    } 
-                    else {
-                        ++it;
-                    }
+            bool b = 0;
+            for(int j = l; j < i; j++) {
+                if(s[i] == s[j]) {
+                    cnt = i-j;
+                    l = j+1;
+                    b = 1;
                 }
-                cnt = i - uptodelete;
             }
-            else {
-                cnt++;
-            }
-            mpp[s[i]] = i;
+            if(b == 0) cnt++;
             ans = max(ans, cnt);
         }
         return ans;
     }
 };
-
-// i = 0; cnt = 1; ans = 1; p = 0; d = 1;
-// i = 1; cnt = 2; ans = 2; w = 1; d = 2;
-// i = 2; cnt = 
 
