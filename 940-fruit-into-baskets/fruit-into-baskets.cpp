@@ -11,11 +11,9 @@ public:
                 maxans = max(maxans, i - l + 1);
             }
             else {
-                while(mpp.size() > 2) {
-                    mpp[nums[l]]--;
-                    if(mpp[nums[l]] == 0) mpp.erase(nums[l]);
-                    l++;
-                }
+                mpp[nums[l]]--;
+                if(mpp[nums[l]] == 0) mpp.erase(nums[l]);
+                l++;
             }
         }
         return maxans;
